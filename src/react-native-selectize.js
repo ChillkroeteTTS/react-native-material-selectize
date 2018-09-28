@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View, ViewPropTypes } from 'react-native';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View, ViewPropTypes, TextPropTypes } from 'react-native';
 import PropTypes from 'prop-types';
 import { normalize, schema } from 'normalizr';
 import Chip from './react-native-chip';
@@ -17,6 +17,7 @@ export default class ReactNativeSelectize extends React.Component {
   static propTypes = {
     autoReflow: PropTypes.bool,
     chipStyle: ViewPropTypes.style,
+    chipTextStyle: TextPropTypes.style,
     chipIconStyle: ViewPropTypes.style,
     containerStyle: ViewPropTypes.style,
     inputContainerStyle: ViewPropTypes.style,
@@ -71,7 +72,7 @@ export default class ReactNativeSelectize extends React.Component {
     textInputProps: {},
     middleComponent: null,
     filterOnKey: null,
-    onChangeSelectedItems: () => {}
+    onChangeSelectedItems: () => { }
   };
 
   constructor(props) {
@@ -320,9 +321,9 @@ export default class ReactNativeSelectize extends React.Component {
 
   render() {
     const { autoReflow, chipStyle, chipIconStyle, containerStyle, inputContainerStyle, textInputProps, errorColor,
-            renderChip, tintColor, label, error, middleComponent } = this.props;
+      renderChip, tintColor, label, error, middleComponent } = this.props;
     const { style: textInputStyleFromProps, onChangeText, onSubmitEditing, onFocus, onBlur, placeholder,
-            ...otherTextInputProps } = textInputProps;
+      ...otherTextInputProps } = textInputProps;
     const { selectedItems, text, textWidth } = this.state;
     const inputContainerBorderStyle = { borderBottomColor: this._getColor(), ...this._getLineStyleVariant() };
     const labelStyle = [styles.label, { color: this._getColor() }];
